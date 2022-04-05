@@ -14,10 +14,13 @@
     "ajv-formats": "^2.1.1",
     "ajv-i18n": "^4.2.0",
     "core-js": "^3.6.5",
+    "json-schema-merge-allof": "0.7",
+    "jsonpointer": "4.1",
     "jss": "10.4",
     "jss-preset-default": "10.4",
+    "lodash.union": "4.6",
     "monaco-editor-webpack-plugin": "1.9",
-    "vue": "^3.0",
+    "vue": "^3.2",
     "vue-jss": "^0.0.4"
   },
   "devDependencies": {
