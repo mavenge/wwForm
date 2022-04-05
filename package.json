@@ -19,12 +19,13 @@
     "jss": "10.4",
     "jss-preset-default": "10.4",
     "lodash.union": "4.6",
-    "monaco-editor-webpack-plugin": "1.9",
     "vue": "^3.2",
     "vue-jss": "^0.0.4"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
+    "@types/json-schema-merge-allof": "^0.6.0",
+    "@types/lodash.union": "^4.6.6",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/babel-plugin-jsx": "^1.1.1",
@@ -37,11 +38,13 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^2.0.0-0",
+    "circular-dependency-plugin": "5.2",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
     "lint-staged": "^9.5.0",
     "monaco-editor": "0.20",
+    "monaco-editor-webpack-plugin": "1.9",
     "prettier": "^2.2.1",
     "typescript": "~4.1.5",
     "vue-jest": "^5.0.0-0"
