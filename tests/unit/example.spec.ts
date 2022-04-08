@@ -1,12 +1,24 @@
-import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import { mount } from '@vue/test-utils'
 
-describe("HelloWorld.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
-      props: { msg },
-    });
-    expect(wrapper.text()).toMatch(msg);
-  });
-});
+import SchemaForm, { NumberField } from '../../lib'
+
+describe('SchemaForm', () => {
+  it('NumberField should be rendered', () => {
+    let value = ''
+
+    const wrapper = mount(SchemaForm, {
+      props: {
+        schema: {
+          type: 'number',
+        },
+        value: value,
+        onChange: (v: any) => {
+          value = v
+        },
+      },
+    })
+
+    const numberField = wrapper.findComponent(NumberField)
+    expect(numberField.exists()).toBeTruthy()
+  })
+})
