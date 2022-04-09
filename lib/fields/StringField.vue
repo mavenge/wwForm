@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRef } from "vue";
+import { toRef, defineProps } from "vue";
 
 import { FieldProps } from "../types";
 

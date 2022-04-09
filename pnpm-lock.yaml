@@ -22,6 +22,7 @@ specifiers:
   ajv-i18n: ^4.2.0
   circular-dependency-plugin: '5.2'
   core-js: ^3.6.5
+  cross-env: ^7.0.3
   eslint: ^6.7.2
   eslint-plugin-prettier: ^3.3.1
   eslint-plugin-vue: ^7.0.0
@@ -70,6 +71,7 @@ devDependencies:
   '@vue/eslint-config-typescript': registry.npmmirror.com/@vue/eslint-config-typescript/7.0.0_a4026fa076dd8f44e94f0e8ffbcc3f1d
   '@vue/test-utils': registry.npmmirror.com/@vue/test-utils/2.0.0-rc.19_vue@3.2.31
   circular-dependency-plugin: registry.npmmirror.com/circular-dependency-plugin/5.2.2
+  cross-env: registry.npmmirror.com/cross-env/7.0.3
   eslint: registry.npmmirror.com/eslint/6.8.0
   eslint-plugin-prettier: registry.npmmirror.com/eslint-plugin-prettier/3.4.1_eslint@6.8.0+prettier@2.6.2
   eslint-plugin-vue: registry.npmmirror.com/eslint-plugin-vue/7.20.0_eslint@6.8.0
@@ -5179,6 +5181,16 @@ packages:
       ripemd160: registry.npmmirror.com/ripemd160/2.0.2
       safe-buffer: registry.npmmirror.com/safe-buffer/5.2.1
       sha.js: registry.npmmirror.com/sha.js/2.4.11
+    dev: true
+
+  registry.npmmirror.com/cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cross-env/-/cross-env-7.0.3.tgz}
+    name: cross-env
+    version: 7.0.3
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: registry.npmmirror.com/cross-spawn/7.0.3
     dev: true
 
   registry.npmmirror.com/cross-spawn/5.1.0:
