@@ -1,4 +1,5 @@
 schema-test
 MonacoEditor.tsx
-App.tsx
+tests
 vue.config.js
+types.ts

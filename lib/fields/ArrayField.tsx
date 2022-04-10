@@ -3,7 +3,7 @@ import { createUseStyles } from 'vue-jss'
 
 import { FieldProps, Schema } from '../types'
 import { useContext } from '../context'
-import Selection from '../widgets/Selection'
+// import Selection from '../widgets/Selection'
 
 const useStyles = createUseStyles({
   container: {
@@ -158,6 +158,8 @@ export default defineComponent({
 
     return () => {
 
+      const SelectionWidget = context.theme.widget.SelectionWidget
+
       const { schema, rootSchema, value } = props
 
       const SchemaItem = context.SchemaItem
@@ -206,7 +208,7 @@ export default defineComponent({
         }))
 
         return (
-          <Selection
+          <SelectionWidget
             options={options}
             onChange={props.onChange}
             value={value}

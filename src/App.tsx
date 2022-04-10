@@ -1,27 +1,28 @@
-import { defineComponent, ref, Ref, reactive, watchEffect } from 'vue'
-import { createUseStyles } from 'vue-jss'
+import { defineComponent, ref, Ref, reactive, watchEffect } from "vue";
+import { createUseStyles } from "vue-jss";
 
-import MonacoEditor from './components/MonacoEditor'
+import MonacoEditor from "./components/MonacoEditor";
 
-import demos from './demos'
+import demos from "./demos";
 
-import SchemaForm from '../lib'
+import SchemaForm from "../lib";
+import themeDefault from "../lib/theme-default";
 
 // TODO: 在lib中export
-type Schema = any
-type UISchema = any
+type Schema = any;
+type UISchema = any;
 
 function toJson(data: any) {
-  return JSON.stringify(data, null, 2)
+  return JSON.stringify(data, null, 2);
 }
 
 const useStyles = createUseStyles({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100vh',
-    width: '1200px',
-    margin: '0 auto',
+    display: "flex",
+    flexDirection: "column",
+    height: "100vh",
+    width: "1200px",
+    margin: "0 auto",
   },
   menu: {
     marginBottom: 20,
@@ -35,100 +36,100 @@ const useStyles = createUseStyles({
     marginBottom: 20,
   },
   uiAndValue: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    '& > *': {
-      width: '46%',
+    display: "flex",
+    justifyContent: "space-between",
+    "& > *": {
+      width: "46%",
     },
   },
   content: {
-    display: 'flex',
+    display: "flex",
   },
   form: {
-    padding: '0 20px',
+    padding: "0 20px",
     flexGrow: 1,
   },
   menuButton: {
-    appearance: 'none',
+    appearance: "none",
     borderWidth: 0,
-    backgroundColor: 'transparent',
-    cursor: 'pointer',
-    display: 'inline-block',
+    backgroundColor: "transparent",
+    cursor: "pointer",
+    display: "inline-block",
     padding: 15,
     borderRadius: 5,
-    '&:hover': {
-      background: '#efefef',
+    "&:hover": {
+      background: "#efefef",
     },
   },
   menuSelected: {
-    background: '#1890ff',
-    color: '#fff',
-    '&:hover': {
-      background: '#40a9ff',
+    background: "#1890ff",
+    color: "#fff",
+    "&:hover": {
+      background: "#40a9ff",
     },
   },
-})
+});
 
 export default defineComponent({
   setup() {
-    const selectedRef: Ref<number> = ref(0)
+    const selectedRef: Ref<number> = ref(0);
 
     const demo: {
-      schema: Schema | null
-      data: any
-      uiSchema: UISchema | null
-      schemaCode: string
-      dataCode: string
-      uiSchemaCode: string
+      schema: Schema | null;
+      data: any;
+      uiSchema: UISchema | null;
+      schemaCode: string;
+      dataCode: string;
+      uiSchemaCode: string;
     } = reactive({
       schema: null,
       data: {},
       uiSchema: {},
-      schemaCode: '',
-      dataCode: '',
-      uiSchemaCode: '',
-    })
+      schemaCode: "",
+      dataCode: "",
+      uiSchemaCode: "",
+    });
 
     watchEffect(() => {
-      const index = selectedRef.value
-      const d = demos[index]
-      demo.schema = d.schema
-      demo.data = d.default
-      demo.uiSchema = d.uiSchema
-      demo.schemaCode = toJson(d.schema)
-      demo.dataCode = toJson(d.default)
-      demo.uiSchemaCode = toJson(d.uiSchema)
-    })
+      const index = selectedRef.value;
+      const d = demos[index];
+      demo.schema = d.schema;
+      demo.data = d.default;
+      demo.uiSchema = d.uiSchema;
+      demo.schemaCode = toJson(d.schema);
+      demo.dataCode = toJson(d.default);
+      demo.uiSchemaCode = toJson(d.uiSchema);
+    });
 
-    const methodRef: Ref<any> = ref()
+    // const methodRef: Ref<any> = ref();
 
-    const classesRef = useStyles()
+    const classesRef = useStyles();
 
     const handleChange = (v: any) => {
-      demo.data = v
-      demo.dataCode = toJson(v)
-    }
+      demo.data = v;
+      demo.dataCode = toJson(v);
+    };
 
     function handleCodeChange(
-      filed: 'schema' | 'data' | 'uiSchema',
+      filed: "schema" | "data" | "uiSchema",
       value: string
     ) {
       try {
-        const json = JSON.parse(value)
-        demo[filed] = json
-        ;(demo as any)[`${filed}Code`] = value
+        const json = JSON.parse(value);
+        demo[filed] = json;
+        (demo as any)[`${filed}Code`] = value;
       } catch (err) {
         // some thing
       }
     }
 
-    const handleSchemaChange = (v: string) => handleCodeChange('schema', v)
-    const handleDataChange = (v: string) => handleCodeChange('data', v)
-    const handleUISchemaChange = (v: string) => handleCodeChange('uiSchema', v)
+    const handleSchemaChange = (v: string) => handleCodeChange("schema", v);
+    const handleDataChange = (v: string) => handleCodeChange("data", v);
+    const handleUISchemaChange = (v: string) => handleCodeChange("uiSchema", v);
 
     return () => {
-      const classes = classesRef.value
-      const selected = selectedRef.value
+      const classes = classesRef.value;
+      const selected = selectedRef.value;
 
       return (
         // <StyleThemeProvider>
@@ -156,25 +157,26 @@ export default defineComponent({
                 code={demo.schemaCode}
                 class={classes.codePanel}
                 onChange={handleSchemaChange}
-                title='Schema'
+                title="Schema"
               />
               <div class={classes.uiAndValue}>
                 <MonacoEditor
                   code={demo.uiSchemaCode}
                   class={classes.codePanel}
                   onChange={handleUISchemaChange}
-                  title='Ui'
+                  title="Ui"
                 />
                 <MonacoEditor
                   code={demo.dataCode}
                   class={classes.codePanel}
                   onChange={handleDataChange}
-                  title='Value'
+                  title="Value"
                 />
               </div>
             </div>
             <div class={classes.form}>
               <SchemaForm
+                theme={themeDefault as any}
                 schema={demo.schema}
                 value={demo.data}
                 onChange={handleChange}
@@ -191,7 +193,7 @@ export default defineComponent({
         </div>
         // </VJSFThemeProvider>
         // </StyleThemeProvider>
-      )
-    }
+      );
+    };
   },
-})
+});
